@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+<!-- Main Section -->
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <a class="backButton" href="{% url 'account' %}"><svg xmlns="http://www.w3.org/2000/svg" width="512"
+                    height="512" viewBox="0 0 512 512">
+                    <title>ionicons-v5-a</title>
+                    <polyline points="328 112 184 256 328 400"
+                        style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px" />
+                </svg></a>
+            <br>
+
+            <form class="form" method="POST" action="">
+
+                {% csrf_token %}
+
+                {% for field in form %}
+                <div class="form__field">
+                    <label for="formInput#text">{{field.label}}</label>
+                    {{field}}
+                </div>
+                {% endfor %}
+
+                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}

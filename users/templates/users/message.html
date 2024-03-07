@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<!-- Main Section -->
+<main class="messagePage my-xl">
+  <div class="content-box">
+    <div class="message">
+      <a class="backButton" href="{% url 'inbox' %}"><svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"
+          viewBox="0 0 512 512">
+          <title>ionicons-v5-a</title>
+          <polyline points="328 112 184 256 328 400"
+            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px" />
+        </svg></a>
+      <h2 class="message__subject">{{message.subject}}</h4>
+        {% if message.sender %}
+        <a href="{% url 'user-profile' message.sender.id %}" class="message__author">{{message.name}}</a>
+        {% else %}
+        <p class="message__author">{{message.name}}</p>
+        {% endif %}
+        <p class="message__date">{{message.created}}</p>
+        <div class="message__body">{{message.body|linebreaksbr}}</div>
+    </div>
+  </div>
+</main>
+{% endblock %}
